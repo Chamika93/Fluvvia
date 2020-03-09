@@ -15,12 +15,13 @@ class TourProvider extends Component {
 
   componentDidMount() {
     //get the data
+    console.log(process.env.REACT_APP_TRIPOSO_ACCOUNT);
     fetch(
       "https://www.triposo.com/api/20190906/tour.json?location_ids=Melbourne",
       {
         headers: {
-          "X-Triposo-Account": "A8Y2YRTV",
-          "X-Triposo-Token": "hgiq3zyo304rc0p3kfkh19zd224lunxh"
+          "X-Triposo-Account": process.env.REACT_APP_TRIPOSO_ACCOUNT,
+          "X-Triposo-Token": process.env.REACT_APP_TRIPOSO_TOKEN
         }
       }
     )

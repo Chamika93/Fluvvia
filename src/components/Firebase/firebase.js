@@ -3,14 +3,14 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const config = {
-  apiKey: "AIzaSyBbQ7Fcf2_WjcpmJjfkguRjfjrXhUtDElo",
-  authDomain: "newproj-1ab1a.firebaseapp.com",
-  databaseURL: "https://newproj-1ab1a.firebaseio.com",
-  projectId: "newproj-1ab1a",
-  storageBucket: "newproj-1ab1a.appspot.com",
-  messagingSenderId: "80103560068",
-  appId: "1:80103560068:web:41660daea2792cd5c043d1",
-  measurementId: "G-7QFC6R2MGK"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 class Firebase {
   constructor() {
@@ -48,10 +48,6 @@ class Firebase {
           .get()
           .then(snapshot => {
             const dbUser = snapshot.data();
-            // default empty roles
-            if (!dbUser.roles) {
-              dbUser.roles = {};
-            }
             // merge auth and db user
             authUser = {
               uid: authUser.uid,
